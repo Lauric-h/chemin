@@ -1,5 +1,8 @@
 name: CI/CD process for Symfony
-on: [ push, pull_request ]
+on:
+  push:
+    branches:
+      - 'main'
 jobs:
   symfony:
     runs-on: ubuntu-20.04
