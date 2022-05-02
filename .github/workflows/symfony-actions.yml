@@ -1,0 +1,37 @@
+name: CI/CD process for Symfony
+on: [ push, pull_request ]
+jobs:
+  symfony:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        php: [ '8.0' ]
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.18.0
+        with:
+          php-version: ${{ matrix.php }}
+          tools: symfony-cli, phpunit, php-cs-fixer
+
+      - uses: actions/checkout@v2
+
+      - name: The PHP Security Checker
+        uses: symfonycorp/security-checker-action@v2
+
+      - name: Composer Install
+        run: composer install --ansi --prefer-dist --no-interaction --no-progress
+
+      - name: Composer Install PHP-CS-Fixer
+        run: cd tools/php-cs-fixer && composer install --ansi --prefer-dist --no-interaction --no-progress
+
+      - name: Run Code Quality checks
+        run: tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src
+
+      - name: Start docker
+        run: docker-compose up -d
+
+      - name: Start Symfony
+        run: symfony serve -d
+
+#      - name: Run tests
+#        run: php bin/phpunit
