@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
-use App\Models\Sport;
+use App\Entity\Abstract\Sport;
+use App\Entity\Enum\MainType;
+use App\Entity\Enum\Status;
+use App\Entity\Enum\Tag;
 use App\Repository\MainSportRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,23 +18,48 @@ class MainSport extends Sport
     private $id;
 
     #[ORM\Column(type: 'integer')]
-    private $distance;
+    private int $distance;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private $elevationGain;
+    private ?int $elevationGain;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private $elevationLoss;
+    private ?int $elevationLoss;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $location;
+    private ?string $location;
+
+    #[ORM\Column(type: 'string', nullable: true, enumType: Tag::class)]
+    private Tag $tag;
+
+    #[ORM\Column(type: 'string', enumType: MainType::class)]
+    private MainType $type;
+
+    #[ORM\ManyToOne(targetEntity: SportSession::class, inversedBy: 'mainSport')]
+    private $sportSession;
+
+    /**
+     * @return MainType
+     */
+    public function getType(): MainType
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param MainType $type
+     */
+    public function setType(MainType $type): void
+    {
+        $this->type = $type;
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDistance(): ?int
+    public function getDistance(): int
     {
         return $this->distance;
     }
@@ -78,4 +106,34 @@ class MainSport extends Sport
 
         return $this;
     }
+
+    /**
+     * @return Tag
+     */
+    public function getTag(): Tag
+    {
+        return $this->tag;
+    }
+
+    /**
+     * @param Tag $tag
+     */
+    public function setTag(Tag $tag): void
+    {
+        $this->tag = $tag;
+    }
+
+    public function getSportSession(): ?SportSession
+    {
+        return $this->sportSession;
+    }
+
+    public function setSportSession(?SportSession $sportSession): self
+    {
+        $this->sportSession = $sportSession;
+
+        return $this;
+    }
+
+
 }
