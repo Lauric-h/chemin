@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Entity\Abstract\Sport;
 use App\Entity\Enum\MainType;
-use App\Entity\Enum\Status;
 use App\Entity\Enum\Tag;
 use App\Repository\MainSportRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -48,10 +47,12 @@ class MainSport extends Sport
 
     /**
      * @param MainType $type
+     * @return MainSport
      */
-    public function setType(MainType $type): void
+    public function setType(MainType $type): self
     {
         $this->type = $type;
+        return $this;
     }
 
     public function getId(): ?int
@@ -117,10 +118,12 @@ class MainSport extends Sport
 
     /**
      * @param Tag $tag
+     * @return MainSport
      */
-    public function setTag(Tag $tag): void
+    public function setTag(Tag $tag): self
     {
         $this->tag = $tag;
+        return $this;
     }
 
     public function getSportSession(): ?SportSession

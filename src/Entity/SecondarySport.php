@@ -36,10 +36,12 @@ class SecondarySport extends Sport
 
     /**
      * @param SecondaryType $type
+     * @return SecondarySport
      */
-    public function setType(SecondaryType $type): void
+    public function setType(SecondaryType $type): self
     {
         $this->type = $type;
+        return $this;
     }
 
     public function getSportSession(): ?SportSession

@@ -28,10 +28,12 @@ abstract class Sport
 
     /**
      * @param string $name
+     * @return Sport
      */
-    public function setName(string $name): void
+    public function setName(string $name): self
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -44,10 +46,12 @@ abstract class Sport
 
     /**
      * @param int $duration
+     * @return Sport
      */
-    public function setDuration(int $duration): void
+    public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+        return $this;
     }
 
     /**
@@ -60,10 +64,12 @@ abstract class Sport
 
     /**
      * @param Status $status
+     * @return Sport
      */
-    public function setStatus(Status $status): void
+    public function setStatus(Status $status): self
     {
         $this->status = $status;
+        return $this;
     }
 
 
