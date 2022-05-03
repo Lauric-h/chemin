@@ -6,7 +6,7 @@ Chemin (French for trail) is a side-project where I can add and track my trainin
 
 ### Requirements
 
-- PHP 8.0
+- PHP 8.1
 - Composer
 - Symfony CLI
 - Docker
@@ -51,7 +51,7 @@ The Symfony project will be the main projet, displaying the views and calling th
 
 ### Tech
 - PHP / Symfony
-- MySQL
+- PostgreSQL
 - Bootstrap
 - Docker/Docker-Compose
 - PHP CS Fixer

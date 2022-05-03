@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
+
+    <div class="example-wrapper">
+        {% for sport in sportSession %}
+            {% for ms in sport.mainSport %}
+                <p>{{ ms.name }}</p>
+            {% endfor %}
+            {% for sec in sport.secondarySport %}
+                <p>{{ sec.name }}</p>
+            {% endfor %}
+            {#            <p>{{ sport.notes }}</p> #}
+            {#            <p>{{ sport.secondarySport.duration }}</p> #}
+            {#            <p>{{ sport.trainingPlan.duration }}</p> #}
+
+        {% endfor %}
+
+        {% for m in main %}
+            {#            <p>{{ m.duration }}</p> #}
+            {#            <p>{{ m.name }}</p> #}
+            {#            <p>{{ m.distance }}</p> #}
+            {#            <p>{{ m.elevationGain }}</p> #}
+            {#            <p>{{ m.elevationLoss }}</p> #}
+            {#            <p>{{ m.location }}</p> #}
+            {#            <p>{{ m.tag.value }}</p> #}
+            {#            <p>{{ m.type.value }}</p> #}
+            {#            <p>{{ m.status.value }}</p> #}
+            <p>{{ m.sportSession.totalDuration }}</p>
+
+        {% endfor %}
+
+        {% for s in second %}
+            {#            <p>{{ s.duration }}</p> #}
+            {#            <p>{{ s.status.value }}</p> #}
+            {#            <p>{{ s.name }}</p> #}
+            {#            <p>{{ s.type.value }}</p> #}
+            <p>{{ s.sportSession.totalDuration }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
