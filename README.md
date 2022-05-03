@@ -27,6 +27,8 @@ npm run build
 symfony serve -d
 ```
 
+To load fake date, use `symfony console doctrine:fixtures:load`
+
 ## Symfony - Chemin
 The Symfony project will be the main projet, displaying the views and calling the other two services.
 - Chemin - Fit decoder (Java)
