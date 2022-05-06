@@ -51,7 +51,7 @@ The Symfony project will be the main projet, displaying the views and calling th
 - Upload a FIT file
 - See reports comparing planned and done sessions
 
-### Tech
+### Tech & dependencies
 - PHP / Symfony
 - PostgreSQL
 - Bootstrap
