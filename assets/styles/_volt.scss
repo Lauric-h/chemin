@@ -22705,6 +22705,18 @@ textarea.form-control-lg {
 /**
  * = Footers
  */
+
+
+footer {
+    margin-left: 360px;
+    margin-right: 1rem;
+}
+
+.footer-content a:active,
+.footer-content a:hover {
+    color: blue;
+}
+
 .footer ul {
     margin-bottom: 0;
     padding: 0;
