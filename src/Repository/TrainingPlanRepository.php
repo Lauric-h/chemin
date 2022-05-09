@@ -50,19 +50,10 @@ class TrainingPlanRepository extends ServiceEntityRepository
     // /**
     //  * @return TrainingPlan[] Returns an array of TrainingPlan objects
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllSortedByDate(): array
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->findBy(array(), array('start_date' => 'ASC'));
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?TrainingPlan
