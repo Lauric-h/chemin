@@ -2,8 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Enum\Status;
 use App\Entity\TrainingPlan;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,6 +19,7 @@ class TrainingPlanType extends AbstractType
             ->add('startDate')
             ->add('endDate')
             ->add('duration')
+            ->add('isDone', CheckboxType::class, ['mapped' => false, 'required' => false])
         ;
     }
 

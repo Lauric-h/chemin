@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Enum\Status;
 use App\Entity\TrainingPlan;
 use App\Form\TrainingPlanType;
 use App\Repository\TrainingPlanRepository;
@@ -72,6 +73,10 @@ class TrainingPlanController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Box checked = done
+            if ($form->get('isDone')->getData()) {
+                $trainingPlan->setStatus(Status::DONE);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('training_plan_index', [], Response::HTTP_SEE_OTHER);

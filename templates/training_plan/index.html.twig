@@ -40,7 +40,7 @@
                     <tbody>
                     <!-- Item -->
                     {% for training_plan in training_plans %}
-                    <tr class=" {{ training_plan.isStarted ? 'bg-yellow-100' : '' }}">
+                    <tr class="{{ training_plan.isStarted ? 'bg-yellow-100' : '' }}">
                         <td>{{ training_plan.name }}</td>
                         <td>
                             {{ training_plan.startDate ? training_plan.startDate|date('d-m-Y') : '' }}
@@ -55,6 +55,7 @@
                             {{ training_plan.isStarted }}
                         </td>
                         <td class="text-center">
+                            {{ training_plan.status.value is same as 'Done' ? '✅' : ''}}
                             {{ training_plan.status.value }}
                         </td>
                         <td class="text-center">
