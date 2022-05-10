@@ -8,21 +8,19 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>StartDate</th>
-                <th>EndDate</th>
-                <th>Duration</th>
+                <th>{{ knp_pagination_sortable(training_plans, 'name', 'tp.name') }}</th>
+                <th>{{ knp_pagination_sortable(training_plans, 'start date', 'tp.startDate') }}</th>
+                <th>{{ knp_pagination_sortable(training_plans, 'end date', 'tp.endDate') }}</th>
+                <th>{{ knp_pagination_sortable(training_plans, 'duration', 'tp.duration') }}</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for training_plan in training_plans %}
             <tr>
-                <td>{{ training_plan.id }}</td>
                 <td>{{ training_plan.name }}</td>
-                <td>{{ training_plan.startDate ? training_plan.startDate|date('Y-m-d') : '' }}</td>
-                <td>{{ training_plan.endDate ? training_plan.endDate|date('Y-m-d') : '' }}</td>
+                <td>{{ training_plan.startDate ? training_plan.startDate|date('d-m-Y') : '' }}</td>
+                <td>{{ training_plan.endDate ? training_plan.endDate|date('d-m-Y') : '' }}</td>
                 <td>{{ training_plan.duration }}</td>
                 <td>
                     <a href="{{ path('training_plan_show', {'id': training_plan.id}) }}">show</a>
@@ -38,4 +36,8 @@
     </table>
 
     <a href="{{ path('training_plan_new') }}">Create new</a>
+
+    <div class="d-flex justify-content-center mt-4">
+        {{ knp_pagination_render(training_plans, 'base/pagination.html.twig') }}
+    </div>
 {% endblock %}

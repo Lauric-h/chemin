@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\TrainingPlan;
 use App\Form\TrainingPlanType;
 use App\Repository\TrainingPlanRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,11 +17,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class TrainingPlanController extends AbstractController
 {
     #[Route('/', name: 'training_plan_index', methods: ['GET'])]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(
+        EntityManagerInterface $em,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response
     {
-        $trainingPlans = $entityManager
-            ->getRepository(TrainingPlan::class)
-            ->findAllSortedByDate();
+        $dql = "SELECT tp FROM App:TrainingPlan tp";
+        $query = $em->createQuery($dql);
+        $trainingPlans = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            10
+        );
 
         return $this->render('training_plan/index.html.twig', [
             'training_plans' => $trainingPlans,

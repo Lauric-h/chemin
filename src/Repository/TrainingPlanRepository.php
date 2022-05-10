@@ -47,14 +47,6 @@ class TrainingPlanRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return TrainingPlan[] Returns an array of TrainingPlan objects
-    //  */
-    public function findAllSortedByDate(): array
-    {
-        return $this->findBy(array(), array('startDate' => 'ASC'));
-    }
-
     /*
     public function findOneBySomeField($value): ?TrainingPlan
     {
