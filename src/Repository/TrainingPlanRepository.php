@@ -52,7 +52,7 @@ class TrainingPlanRepository extends ServiceEntityRepository
     //  */
     public function findAllSortedByDate(): array
     {
-        return $this->findBy(array(), array('start_date' => 'ASC'));
+        return $this->findBy(array(), array('startDate' => 'ASC'));
     }
 
     /*

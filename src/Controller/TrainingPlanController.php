@@ -19,7 +19,7 @@ class TrainingPlanController extends AbstractController
     {
         $trainingPlans = $entityManager
             ->getRepository(TrainingPlan::class)
-            ->findAll();
+            ->findAllSortedByDate();
 
         return $this->render('training_plan/index.html.twig', [
             'training_plans' => $trainingPlans,
