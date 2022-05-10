@@ -7,7 +7,9 @@
 
     {{ include('training_plan/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('training_plan_index') }}" class="btn btn-secondary">Back to list</a>
+    <div class="mb-2 mt-2">
+     <a href="{{ path('training_plan_index') }}" class="btn btn-secondary">Back to list</a>
+    </div>
 
     {{ include('training_plan/_delete_form.html.twig') }}
 {% endblock %}

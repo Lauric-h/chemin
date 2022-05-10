@@ -52,7 +52,13 @@
 
                         <div class="form-check form-switch">
                             <label class="form-check-label" for="isDone">Mark as done</label>
-                            {{ form_widget(form.isDone, { 'attr': { 'class': 'form-check-input' }}) }}
+                            {{ form_widget(form.isDone, { 'attr':
+                                {
+                                    'class': 'form-check-input',
+                                    'disabled': app.request.attributes.get('_route') is same as 'training_plan_edit'
+                                    ? false : true
+                                }
+                            }) }}
                         </div>
 
                         <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
