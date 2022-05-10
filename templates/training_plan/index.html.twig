@@ -3,26 +3,44 @@
 {% block title %}Training Plans{% endblock %}
 
 {% block body %}
-    <h1>Training Plans</h1>
-    <a href="{{ path('training_plan_new') }}">Create new</a>
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Training Plans</h1>
+        <button type="button" class="btn btn-primary d-inline-flex align-items-center">
+            <i class="fas fa-plus-circle icon icon-xxs me-2 d-inline-flex align-items-center"></i>
+            <a href="{{ path('training_plan_new') }}" class="text-white">Create new</a>
+        </button>
+    </div>
     <div class="card border-0 shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-centered table-nowrap mb-0 rounded table-hover table-striped">
                     <thead class="thead-light">
                     <tr>
-                        <th class="border-0 rounded-start">{{ knp_pagination_sortable(training_plans, 'name', 'tp.name') }}</th>
-                        <th class="border-0">{{ knp_pagination_sortable(training_plans, 'start date', 'tp.startDate') }}</th>
-                        <th class="border-0">{{ knp_pagination_sortable(training_plans, 'end date', 'tp.endDate') }}</th>
-                        <th class="border-0 text-center">{{ knp_pagination_sortable(training_plans, 'duration', 'tp.duration')
-                            }}</th>
+                        <th class="border-0 rounded-start">
+                            {{ knp_pagination_sortable(training_plans, 'name', 'tp.name') }}
+                        </th>
+                        <th class="border-0">
+                            {{ knp_pagination_sortable(training_plans, 'start date', 'tp.startDate') }}
+                        </th>
+                        <th class="border-0">
+                            {{ knp_pagination_sortable(training_plans, 'end date', 'tp.endDate') }}
+                        </th>
+                        <th class="border-0 text-center">
+                            {{ knp_pagination_sortable(training_plans, 'duration', 'tp.duration') }}
+                        </th>
+                        <th class="border-0 text-center">
+                            {{ knp_pagination_sortable(training_plans, 'progression', 'tp.isStarted') }}
+                        </th>
+                        <th class="border-0 text-center">
+                            {{ knp_pagination_sortable(training_plans, 'status', 'tp.status') }}
+                        </th>
                         <th class="border-0 rounded-end text-center">actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     <!-- Item -->
                     {% for training_plan in training_plans %}
-                    <tr>
+                    <tr class=" {{ training_plan.isStarted ? 'bg-yellow-100' : '' }}">
                         <td>{{ training_plan.name }}</td>
                         <td>
                             {{ training_plan.startDate ? training_plan.startDate|date('d-m-Y') : '' }}
@@ -33,7 +51,13 @@
                         <td class="text-center">
                             {{ training_plan.duration }}
                         </td>
-                        <td class="d-flex justify-content-around">
+                        <td class="text-center">
+                            {{ training_plan.isStarted }}
+                        </td>
+                        <td class="text-center">
+                            {{ training_plan.status.value }}
+                        </td>
+                        <td class="text-center">
                             <a href="{{ path('training_plan_show', {'id': training_plan.id}) }}"><i class="fas fa-eye"></i></a>
                             <a href="{{ path('training_plan_edit', {'id': training_plan.id}) }}"><i class="fas fa-edit"></i></a>
                         </td>

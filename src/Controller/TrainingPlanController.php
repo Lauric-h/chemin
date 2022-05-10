@@ -44,6 +44,7 @@ class TrainingPlanController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $trainingPlan->checkIsStarted();
             $entityManager->persist($trainingPlan);
             $entityManager->flush();
 
