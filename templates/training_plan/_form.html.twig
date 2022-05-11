@@ -5,13 +5,22 @@
                 <div class="row mb-4">
                     <div class="col-lg-4 col-sm-6">
                         {{ form_start(form) }}
+
+
+                        <div class="my-custom-class-for-errors">
+                            {{ form_errors(form) }}
+                        </div>
+
+
                         <div class="mb-3">
                             {{ form_label(form.name) }}
+                            {{ form_errors(form.name, { 'attr': { 'class': 'alert alert-danger' } }) }}
                             {{ form_widget(form.name, { 'attr': { 'class': 'form-control' } }) }}
                         </div>
 
                         <div class="mb-3">
                             {{ form_label(form.startDate) }}
+                            {{ form_errors(form.startDate, { 'attr': { 'class': 'alert alert-danger' } }) }}
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <svg class="icon icon-xs text-gray-600"
@@ -29,6 +38,7 @@
                         </div>
                         <div class="mb-3">
                             {{ form_label(form.endDate) }}
+                            {{ form_errors(form.endDate, { 'attr': { 'class': 'alert alert-danger' } }) }}
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <svg class="icon icon-xs text-gray-600"
@@ -47,6 +57,7 @@
 
                         <div class="mb-3">
                             {{ form_label(form.duration) }}
+                            {{ form_errors(form.duration, { 'attr': { 'class': 'alert alert-danger' } }) }}
                             {{ form_widget(form.duration, { 'attr': { 'class': 'form-control' } }) }}
                         </div>
 
