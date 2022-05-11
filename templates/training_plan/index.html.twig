@@ -9,6 +9,14 @@
             <i class="fas fa-plus-circle icon icon-xxs me-2 d-inline-flex align-items-center"></i>
             <a href="{{ path('training_plan_new') }}" class="text-white">Create new</a>
         </button>
+        <form action="/" method="POST">
+            <label for="filter">Show only Planned</label>
+            <input type="checkbox" id="filter">
+            <button type="submit" class="btn btn-primary d-inline-flex align-items-center">
+                <a href="{{ path('training_plan_new') }}" class="text-white">Filtrer</a>
+            </button>
+        </form>
+
     </div>
     <div class="card border-0 shadow mb-4">
         <div class="card-body">
@@ -40,30 +48,32 @@
                     <tbody>
                     <!-- Item -->
                     {% for training_plan in training_plans %}
-                    <tr class="{{ training_plan.isStarted ? 'bg-yellow-100' : '' }}">
-                        <td>{{ training_plan.name }}</td>
-                        <td>
-                            {{ training_plan.startDate ? training_plan.startDate|date('d-m-Y') : '' }}
-                        </td>
-                        <td>
-                            {{ training_plan.endDate ? training_plan.endDate|date('d-m-Y') : '' }}
-                        </td>
-                        <td class="text-center">
-                            {{ training_plan.duration }}
-                        </td>
-                        <td class="text-center">
-                            {{ training_plan.isStarted }}
-                        </td>
-                        <td class="text-center">
-                            {{ training_plan.status.value is same as 'Done' ? '✅' : ''}}
-                            {{ training_plan.status.value }}
-                        </td>
-                        <td class="text-center">
-                            <a href="{{ path('training_plan_show', {'id': training_plan.id}) }}"><i class="fas fa-eye"></i></a>
-                            <a href="{{ path('training_plan_edit', {'id': training_plan.id}) }}"><i class="fas fa-edit"></i></a>
-                        </td>
-                    </tr>
-                    <!-- End of Item -->
+                        <tr class="{{ training_plan.isStarted ? 'bg-yellow-100' : '' }}">
+                            <td>{{ training_plan.name }}</td>
+                            <td>
+                                {{ training_plan.startDate ? training_plan.startDate|date('d-m-Y') : '' }}
+                            </td>
+                            <td>
+                                {{ training_plan.endDate ? training_plan.endDate|date('d-m-Y') : '' }}
+                            </td>
+                            <td class="text-center">
+                                {{ training_plan.duration }}
+                            </td>
+                            <td class="text-center">
+                                {{ training_plan.isStarted }}
+                            </td>
+                            <td class="text-center">
+                                {{ training_plan.status.value is same as 'Done' ? '✅' : '' }}
+                                {{ training_plan.status.value }}
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ path('training_plan_show', {'id': training_plan.id}) }}"><i
+                                            class="fas fa-eye"></i></a>
+                                <a href="{{ path('training_plan_edit', {'id': training_plan.id}) }}"><i
+                                            class="fas fa-edit"></i></a>
+                            </td>
+                        </tr>
+                        <!-- End of Item -->
                     {% else %}
                         <tr>
                             <td colspan="6">no records found</td>

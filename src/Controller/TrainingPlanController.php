@@ -33,6 +33,9 @@ class TrainingPlanController extends AbstractController
             10
         );
 
+        // POST rq to /
+        // Checked => rq avec SELECT * FROM tp WHERE tp.status === 'Done'
+
         return $this->render('training_plan/index.html.twig', [
             'training_plans' => $trainingPlans,
         ]);
@@ -52,10 +55,10 @@ class TrainingPlanController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $trainingPlan->checkIsStarted();
 
-            $duration = $durationCalculator->calculateDuration(
-                $trainingPlan->getStartDate(),
-                $trainingPlan->getEndDate());
-            $trainingPlan->setDuration($duration);
+//            $duration = $durationCalculator->calculateDuration(
+//                $trainingPlan->getStartDate(),
+//                $trainingPlan->getEndDate());
+//            $trainingPlan->setDuration($duration);
 
             $entityManager->persist($trainingPlan);
             $entityManager->flush();
@@ -78,7 +81,12 @@ class TrainingPlanController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'training_plan_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, TrainingPlan $trainingPlan, EntityManagerInterface $entityManager): Response
+    public function edit(
+        Request $request,
+        TrainingPlan $trainingPlan,
+        EntityManagerInterface $entityManager,
+        DurationCalculator $durationCalculator
+    ): Response
     {
         $form = $this->createForm(TrainingPlanType::class, $trainingPlan);
         $form->handleRequest($request);
@@ -88,6 +96,12 @@ class TrainingPlanController extends AbstractController
             if ($form->get('isDone')->getData()) {
                 $trainingPlan->setStatus(Status::DONE);
             }
+
+            $duration = $durationCalculator->calculateDuration(
+                $trainingPlan->getStartDate(),
+                $trainingPlan->getEndDate());
+            $trainingPlan->setDuration($duration);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('training_plan_index', [], Response::HTTP_SEE_OTHER);
