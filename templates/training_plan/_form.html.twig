@@ -22,6 +22,7 @@
                             {{ form_label(form.startDate) }}
                             {{ form_errors(form.startDate, { 'attr': { 'class': 'alert alert-danger' } }) }}
                             <div class="input-group">
+                            <div class="input-group">
                                 <span class="input-group-text">
                                     <svg class="icon icon-xs text-gray-600"
                                          fill="currentColor"
@@ -53,12 +54,6 @@
                                 </span>
                                 {{ form_widget(form.endDate, { 'attr': { 'class': 'form-control' } }) }}
                             </div>
-                        </div>
-
-                        <div class="mb-3">
-                            {{ form_label(form.duration) }}
-                            {{ form_errors(form.duration, { 'attr': { 'class': 'alert alert-danger' } }) }}
-                            {{ form_widget(form.duration, { 'attr': { 'class': 'form-control' } }) }}
                         </div>
 
                         <div class="form-check form-switch">

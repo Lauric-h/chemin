@@ -6,6 +6,7 @@ use App\Entity\Enum\Status;
 use App\Entity\TrainingPlan;
 use App\Form\TrainingPlanType;
 use App\Repository\TrainingPlanRepository;
+use App\Service\DurationCalculator;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -38,7 +39,11 @@ class TrainingPlanController extends AbstractController
     }
 
     #[Route('/new', name: 'training_plan_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        DurationCalculator $durationCalculator
+    ): Response
     {
         $trainingPlan = new TrainingPlan();
         $form = $this->createForm(TrainingPlanType::class, $trainingPlan);
@@ -46,6 +51,12 @@ class TrainingPlanController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $trainingPlan->checkIsStarted();
+
+            $duration = $durationCalculator->calculateDuration(
+                $trainingPlan->getStartDate(),
+                $trainingPlan->getEndDate());
+            $trainingPlan->setDuration($duration);
+
             $entityManager->persist($trainingPlan);
             $entityManager->flush();
 

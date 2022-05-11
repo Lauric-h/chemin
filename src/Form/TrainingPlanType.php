@@ -18,7 +18,6 @@ class TrainingPlanType extends AbstractType
             ->add('name')
             ->add('startDate')
             ->add('endDate')
-            ->add('duration')
             ->add('isDone', CheckboxType::class, ['mapped' => false, 'required' => false])
         ;
     }
