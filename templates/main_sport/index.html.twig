@@ -26,14 +26,11 @@
             <tr>
                 <td>{{ main_sport.name }}</td>
                 <td>{{ main_sport.duration }}</td>
-                <td>{{ main_sport.status }}</td>
                 <td>{{ main_sport.id }}</td>
                 <td>{{ main_sport.distance }}</td>
                 <td>{{ main_sport.elevationGain }}</td>
                 <td>{{ main_sport.elevationLoss }}</td>
                 <td>{{ main_sport.location }}</td>
-                <td>{{ main_sport.tag }}</td>
-                <td>{{ main_sport.type }}</td>
                 <td>
                     <a href="{{ path('main_sport_show', {'id': main_sport.id}) }}">show</a>
                     <a href="{{ path('main_sport_edit', {'id': main_sport.id}) }}">edit</a>

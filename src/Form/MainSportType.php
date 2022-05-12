@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Enum\MainType;
 use App\Entity\Enum\Status;
+use App\Entity\Enum\Tag;
 use App\Entity\MainSport;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
@@ -21,9 +23,8 @@ class MainSportType extends AbstractType
             ->add('elevationGain')
             ->add('elevationLoss')
             ->add('location')
-            ->add('tag')
-            ->add('type')
-            ->add('sportSession')
+            ->add('tag', EnumType::class, ['class' => Tag::class])
+            ->add('type', EnumType::class, ['class' => MainType::class])
         ;
     }
 

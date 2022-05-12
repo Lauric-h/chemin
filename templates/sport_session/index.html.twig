@@ -35,10 +35,10 @@
                 <td>{{ sport_session.notes }}</td>
                 <td>{{ sport_session.date ? sport_session.date|date('Y-m-d') : '' }}</td>
                 <td class="text-center">
-                    <a href="{{ path('training_plan_show', {'id': sport_session.id}) }}">
+                    <a href="{{ path('sport_session_show', {'id': sport_session.id}) }}">
                         <i class="fas fa-eye"></i>
                     </a>
-                    <a href="{{ path('training_plan_edit', {'id': sport_session.id}) }}">
+                    <a href="{{ path('sport_session_edit', {'id': sport_session.id}) }}">
                         <i class="fas fa-edit"></i>
                     </a>
                 </td>

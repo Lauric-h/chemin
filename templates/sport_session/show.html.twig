@@ -38,6 +38,15 @@
         </tbody>
     </table>
 
+    <div>
+        {% for s in sport_session.mainSport %}
+            <p>{{ s.name }}</p>
+            <p>{{ s.duration }}</p>
+            <p>{{ s.distance }}</p>
+            <p>{{ s.status.value }}</p>
+        {% endfor %}
+    </div>
+
     <a href="{{ path('sport_session_index') }}">back to list</a>
 
     <a href="{{ path('sport_session_edit', {'id': sport_session.id}) }}">edit</a>

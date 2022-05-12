@@ -8,6 +8,7 @@
     {{ include('sport_session/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('sport_session_index') }}">back to list</a>
+    <a href="{{ path('main_sport_new', {'id': sport_session.id}) }}">add main sport</a>
 
     {{ include('sport_session/_delete_form.html.twig') }}
 {% endblock %}

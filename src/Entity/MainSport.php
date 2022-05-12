@@ -35,6 +35,7 @@ class MainSport extends Sport
     private MainType $type;
 
     #[ORM\ManyToOne(targetEntity: SportSession::class, inversedBy: 'mainSport')]
+    #[ORM\JoinColumn(name: 'sport_session_id', referencedColumnName: 'id')]
     private $sportSession;
 
     /**

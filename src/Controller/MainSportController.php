@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\MainSport;
+use App\Entity\SportSession;
 use App\Form\MainSportType;
 use App\Repository\MainSportRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,6 +31,12 @@ class MainSportController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $mainSport = new MainSport();
+
+        $sportSession = $entityManager->getRepository(SportSession::class)->find($request->get('id'));
+
+        $mainSport->setSportSession($sportSession);
+
+
         $form = $this->createForm(MainSportType::class, $mainSport);
         $form->handleRequest($request);
 
@@ -37,7 +44,9 @@ class MainSportController extends AbstractController
             $entityManager->persist($mainSport);
             $entityManager->flush();
 
-            return $this->redirectToRoute('main_sport_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('sport_session_edit', [
+                'id' => $sportSession->getId()
+            ], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('main_sport/new.html.twig', [
