@@ -45,7 +45,6 @@ class TrainingPlanController extends AbstractController
     public function new(
         Request $request,
         EntityManagerInterface $entityManager,
-        DurationCalculator $durationCalculator
     ): Response
     {
         $trainingPlan = new TrainingPlan();
@@ -54,11 +53,6 @@ class TrainingPlanController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $trainingPlan->checkIsStarted();
-
-//            $duration = $durationCalculator->calculateDuration(
-//                $trainingPlan->getStartDate(),
-//                $trainingPlan->getEndDate());
-//            $trainingPlan->setDuration($duration);
 
             $entityManager->persist($trainingPlan);
             $entityManager->flush();
@@ -85,7 +79,6 @@ class TrainingPlanController extends AbstractController
         Request $request,
         TrainingPlan $trainingPlan,
         EntityManagerInterface $entityManager,
-        DurationCalculator $durationCalculator
     ): Response
     {
         $form = $this->createForm(TrainingPlanType::class, $trainingPlan);
@@ -96,11 +89,6 @@ class TrainingPlanController extends AbstractController
             if ($form->get('isDone')->getData()) {
                 $trainingPlan->setStatus(Status::DONE);
             }
-
-            $duration = $durationCalculator->calculateDuration(
-                $trainingPlan->getStartDate(),
-                $trainingPlan->getEndDate());
-            $trainingPlan->setDuration($duration);
 
             $entityManager->flush();
 

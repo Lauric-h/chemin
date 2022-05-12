@@ -22,7 +22,7 @@
                             {{ form_label(form.startDate) }}
                             {{ form_errors(form.startDate, { 'attr': { 'class': 'alert alert-danger' } }) }}
                             <div class="input-group">
-                            <div class="input-group">
+                                <div class="input-group">
                                 <span class="input-group-text">
                                     <svg class="icon icon-xs text-gray-600"
                                          fill="currentColor"
@@ -34,13 +34,13 @@
                                         </path>
                                     </svg>
                                 </span>
-                                {{ form_widget(form.startDate, { 'attr': { 'class': 'form-control' } }) }}
+                                    {{ form_widget(form.startDate, { 'attr': { 'class': 'form-control' } }) }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            {{ form_label(form.endDate) }}
-                            {{ form_errors(form.endDate, { 'attr': { 'class': 'alert alert-danger' } }) }}
-                            <div class="input-group">
+                            <div class="mb-3">
+                                {{ form_label(form.endDate) }}
+                                {{ form_errors(form.endDate, { 'attr': { 'class': 'alert alert-danger' } }) }}
+                                <div class="input-group">
                                 <span class="input-group-text">
                                     <svg class="icon icon-xs text-gray-600"
                                          fill="currentColor"
@@ -52,27 +52,27 @@
                                         </path>
                                     </svg>
                                 </span>
-                                {{ form_widget(form.endDate, { 'attr': { 'class': 'form-control' } }) }}
+                                    {{ form_widget(form.endDate, { 'attr': { 'class': 'form-control' } }) }}
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-check form-switch">
-                            <label class="form-check-label" for="isDone">Mark as done</label>
-                            {{ form_widget(form.isDone, { 'attr':
-                                {
-                                    'class': 'form-check-input',
-                                    'disabled': app.request.attributes.get('_route') is same as 'training_plan_edit'
-                                    ? false : true
-                                }
-                            }) }}
-                        </div>
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="isDone">Mark as done</label>
+                                {{ form_widget(form.isDone, { 'attr':
+                                    {
+                                        'class': 'form-check-input',
+                                        'disabled': app.request.attributes.get('_route') is same as 'training_plan_edit'
+                                        ? false : true
+                                    }
+                                }) }}
+                            </div>
 
-                        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
-                        {{ form_end(form) }}
+                            <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+                            {{ form_end(form) }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
