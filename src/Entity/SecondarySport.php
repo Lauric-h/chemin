@@ -55,6 +55,4 @@ class SecondarySport extends Sport
 
         return $this;
     }
-
-
 }
