@@ -172,4 +172,11 @@ class TrainingPlan
         $this->status = $status;
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
+
 }

@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card border-0 shadow components-section">
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-lg-4 col-sm-6">
+
+                        <div class="mb-3">
+                            {{ form_start(form) }}
+                            <div class="my-4">
+                                {{ form_label(form.notes) }}
+                                {{ form_errors(form.notes, { 'attr': { 'class': 'alert alert-danger' } }) }}
+                                {{ form_widget(form.notes, { 'attr': { 'class': 'form-control' } }) }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_label(form.date) }}
+                                {{ form_errors(form.date, { 'attr': { 'class': 'alert alert-danger' } }) }}
+                                <div class="input-group">
+                                <span class="input-group-text">
+                                    <svg class="icon icon-xs text-gray-600"
+                                         fill="currentColor"
+                                         viewBox="0 0 20 20"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                              d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                              clip-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                    {{ form_widget(form.date, { 'attr': { 'class': 'form-control' } }) }}
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                {# {{ form_label(form.trainingPlan, { 'attr': { 'class': 'my-1 me-2' } }) }} #}
+                                {{ form_widget(form.trainingPlan, { 'attr': { 'class': 'form-select' } }) }}
+                            </div>
+
+                            <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+                            <a href="{{ path('main_sport_new', {'id': sport_session.id }) }}">Add main sport</a>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

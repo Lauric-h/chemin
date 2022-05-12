@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MainSport{% endblock %}
+
+{% block body %}
+    <h1>MainSport</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ main_sport.name }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>{{ main_sport.duration }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ main_sport.status }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ main_sport.id }}</td>
+            </tr>
+            <tr>
+                <th>Distance</th>
+                <td>{{ main_sport.distance }}</td>
+            </tr>
+            <tr>
+                <th>ElevationGain</th>
+                <td>{{ main_sport.elevationGain }}</td>
+            </tr>
+            <tr>
+                <th>ElevationLoss</th>
+                <td>{{ main_sport.elevationLoss }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ main_sport.location }}</td>
+            </tr>
+            <tr>
+                <th>Tag</th>
+                <td>{{ main_sport.tag }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ main_sport.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('main_sport_index') }}">back to list</a>
+
+    <a href="{{ path('main_sport_edit', {'id': main_sport.id}) }}">edit</a>
+
+    {{ include('main_sport/_delete_form.html.twig') }}
+{% endblock %}

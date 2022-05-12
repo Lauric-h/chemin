@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MainSport index{% endblock %}
+
+{% block body %}
+    <h1>MainSport index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Id</th>
+                <th>Distance</th>
+                <th>ElevationGain</th>
+                <th>ElevationLoss</th>
+                <th>Location</th>
+                <th>Tag</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for main_sport in main_sports %}
+            <tr>
+                <td>{{ main_sport.name }}</td>
+                <td>{{ main_sport.duration }}</td>
+                <td>{{ main_sport.status }}</td>
+                <td>{{ main_sport.id }}</td>
+                <td>{{ main_sport.distance }}</td>
+                <td>{{ main_sport.elevationGain }}</td>
+                <td>{{ main_sport.elevationLoss }}</td>
+                <td>{{ main_sport.location }}</td>
+                <td>{{ main_sport.tag }}</td>
+                <td>{{ main_sport.type }}</td>
+                <td>
+                    <a href="{{ path('main_sport_show', {'id': main_sport.id}) }}">show</a>
+                    <a href="{{ path('main_sport_edit', {'id': main_sport.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('main_sport_new') }}">Create new</a>
+{% endblock %}

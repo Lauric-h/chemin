@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trainings{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Trainings</h1>
+        <button type="button" class="btn btn-primary d-inline-flex align-items-center">
+            <i class="fas fa-plus-circle icon icon-xxs me-2 d-inline-flex align-items-center"></i>
+            <a href="{{ path('sport_session_new') }}" class="text-white">Create new</a>
+        </button>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>TotalDuration</th>
+            <th>TotalDistance</th>
+            <th>TotalElevationGain</th>
+            <th>TotalElevationLoss</th>
+            <th>Notes</th>
+            <th>Date</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sport_session in sport_sessions %}
+            <tr>
+                <td>{{ sport_session.id }}</td>
+                <td>{{ sport_session.totalDuration }}</td>
+                <td>{{ sport_session.totalDistance }}</td>
+                <td>{{ sport_session.totalElevationGain }}</td>
+                <td>{{ sport_session.totalElevationLoss }}</td>
+                <td>{{ sport_session.notes }}</td>
+                <td>{{ sport_session.date ? sport_session.date|date('Y-m-d') : '' }}</td>
+                <td class="text-center">
+                    <a href="{{ path('training_plan_show', {'id': sport_session.id}) }}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="{{ path('training_plan_edit', {'id': sport_session.id}) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center mt-4">
+        {{ knp_pagination_render(sport_sessions, 'base/pagination.html.twig') }}
+    </div>
+{% endblock %}

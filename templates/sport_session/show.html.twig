@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SportSession{% endblock %}
+
+{% block body %}
+    <h1>SportSession</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sport_session.id }}</td>
+            </tr>
+            <tr>
+                <th>TotalDuration</th>
+                <td>{{ sport_session.totalDuration }}</td>
+            </tr>
+            <tr>
+                <th>TotalDistance</th>
+                <td>{{ sport_session.totalDistance }}</td>
+            </tr>
+            <tr>
+                <th>TotalElevationGain</th>
+                <td>{{ sport_session.totalElevationGain }}</td>
+            </tr>
+            <tr>
+                <th>TotalElevationLoss</th>
+                <td>{{ sport_session.totalElevationLoss }}</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>{{ sport_session.notes }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ sport_session.date ? sport_session.date|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('sport_session_index') }}">back to list</a>
+
+    <a href="{{ path('sport_session_edit', {'id': sport_session.id}) }}">edit</a>
+
+    {{ include('sport_session/_delete_form.html.twig') }}
+{% endblock %}

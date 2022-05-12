@@ -15,13 +15,13 @@ class SportSession
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $totalDuration;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $totalDistance;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $totalElevationGain;
 
     #[ORM\Column(type: 'integer', nullable: true)]
@@ -196,4 +196,11 @@ class SportSession
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->date->format('d-m-Y');
+    }
+
+
 }

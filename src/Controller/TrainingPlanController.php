@@ -33,9 +33,6 @@ class TrainingPlanController extends AbstractController
             10
         );
 
-        // POST rq to /
-        // Checked => rq avec SELECT * FROM tp WHERE tp.status === 'Done'
-
         return $this->render('training_plan/index.html.twig', [
             'training_plans' => $trainingPlans,
         ]);
