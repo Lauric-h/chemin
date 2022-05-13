@@ -1,4 +1,10 @@
-<form method="post" action="{{ path('main_sport_delete', {'id': main_sport.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+<form method="post"
+      action="{{ path('main_sport_delete', {'id': main_sport.id}) }}"
+      onsubmit="return confirm('Are you sure you want to delete this item?');"
+>
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ main_sport.id) }}">
-    <button class="btn">Delete</button>
+    {# Inline style to take precedence over styled template #}
+    <button style="padding: 0; border: none; outline: none; background: none;">
+        <i class="fas fa-minus-circle" style="color:red;"></i>
+    </button>
 </form>

@@ -31,11 +31,8 @@ class MainSportController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $mainSport = new MainSport();
-
         $sportSession = $entityManager->getRepository(SportSession::class)->find($request->get('id'));
-
         $mainSport->setSportSession($sportSession);
-
 
         $form = $this->createForm(MainSportType::class, $mainSport);
         $form->handleRequest($request);

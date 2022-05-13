@@ -1,48 +1,64 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}MainSport{% endblock %}
+<div class="col-12 mb-4">
+    <div class="card border-0 shadow">
+        <div class="card-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h2 class="fs-5 fw-bold mb-0">Main sports</h2>
+                </div>
+                <div class="col text-end">
+                    <a href="{{ path('main_sport_new', {'id': sport_session.id }) }}" class="btn btn-sm btn-primary">
+                        Add main sport
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                <tr>
+                    <th class="border-bottom" scope="col">Name</th>
+                    <th class="border-bottom" scope="col">Duration</th>
+                    <th class="border-bottom" scope="col">Distance</th>
+                    <th class="border-bottom" scope="col">Elevation Gain</th>
+                    <th class="border-bottom" scope="col">Elevation Loss</th>
+                    <th class="border-bottom" scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th class="text-gray-900" scope="row">
+                        {{ main_sport.name }}
+                    </th>
+                    <td class="fw-bolder text-gray-500">
+                        {{ main_sport.duration }}
+                    </td>
+                    <td class="fw-bolder text-gray-500">
+                        {{ main_sport.distance }}
+                    </td>
+                    <td class="fw-bolder text-gray-500">
+                        <div class="d-flex">
+                            <svg class="icon icon-xs text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            {{ main_sport.elevationGain }}
+                        </div>
+                    </td>
+                    <td class="fw-bolder text-gray-500">
+                        <div class="d-flex">
+                            <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            {{ main_sport.elevationLoss }}
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a href="{{ path('main_sport_edit', {'id': main_sport.id}) }}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        {{ include('main_sport/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-{% block body %}
-    <h1>MainSport</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Name</th>
-                <td>{{ main_sport.name }}</td>
-            </tr>
-            <tr>
-                <th>Duration</th>
-                <td>{{ main_sport.duration }}</td>
-            </tr>
-
-            <tr>
-                <th>Id</th>
-                <td>{{ main_sport.id }}</td>
-            </tr>
-            <tr>
-                <th>Distance</th>
-                <td>{{ main_sport.distance }}</td>
-            </tr>
-            <tr>
-                <th>ElevationGain</th>
-                <td>{{ main_sport.elevationGain }}</td>
-            </tr>
-            <tr>
-                <th>ElevationLoss</th>
-                <td>{{ main_sport.elevationLoss }}</td>
-            </tr>
-            <tr>
-                <th>Location</th>
-                <td>{{ main_sport.location }}</td>
-            </tr>
-
-        </tbody>
-    </table>
-
-    <a href="{{ path('main_sport_index') }}">back to list</a>
-
-    <a href="{{ path('main_sport_edit', {'id': main_sport.id}) }}">edit</a>
-
-    {{ include('main_sport/_delete_form.html.twig') }}
-{% endblock %}
