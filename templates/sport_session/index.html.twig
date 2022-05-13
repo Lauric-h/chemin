@@ -11,45 +11,55 @@
         </button>
     </div>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>TotalDuration</th>
-            <th>TotalDistance</th>
-            <th>TotalElevationGain</th>
-            <th>TotalElevationLoss</th>
-            <th>Notes</th>
-            <th>Date</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for sport_session in sport_sessions %}
-            <tr>
-                <td>{{ sport_session.id }}</td>
-                <td>{{ sport_session.totalDuration }}</td>
-                <td>{{ sport_session.totalDistance }}</td>
-                <td>{{ sport_session.totalElevationGain }}</td>
-                <td>{{ sport_session.totalElevationLoss }}</td>
-                <td>{{ sport_session.notes }}</td>
-                <td>{{ sport_session.date ? sport_session.date|date('Y-m-d') : '' }}</td>
-                <td class="text-center">
-                    <a href="{{ path('sport_session_show', {'id': sport_session.id}) }}">
-                        <i class="fas fa-eye"></i>
-                    </a>
-                    <a href="{{ path('sport_session_edit', {'id': sport_session.id}) }}">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="card border-0 shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap mb-0 rounded table-hover table-striped">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Duration</th>
+                        <th>Distance</th>
+                        <th>Elevation gain</th>
+                        <th>Elevation loss</th>
+                        <th>Total duration</th>
+                        <th>Total distance</th>
+                        <th class="border-0 rounded-end text-center">actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Item -->
+                    {% for session in sport_sessions %}
+                        <tr>
+                            <td>{{ session.date ? session.date|date('d-m-Y') : '' }}</td>
+                            {% for mainSport in session.mainSport %}
+                                <td>{{ mainSport.name }}</td>
+                                <td>{{ mainSport.duration }}</td>
+                                <td>{{ mainSport.distance }}</td>
+                                <td>{{ mainSport.elevationGain }}</td>
+                                <td>{{ mainSport.elevationLoss }}</td>
+                            {% endfor %}
+                            <td>{{ session.totalDuration }}</td>
+                            <td>{{ session.totalDistance }}</td>
+                            <td class="text-center">
+                                <a href="{{ path('sport_session_show', {'id': session.id}) }}"><i
+                                            class="fas fa-eye"></i></a>
+                                <a href="{{ path('sport_session_edit', {'id': session.id}) }}"><i
+                                            class="fas fa-edit"></i></a>
+                            </td>
+                        </tr>
+                        <!-- End of Item -->
+                    {% else %}
+                        <tr>
+                            <td colspan="6">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <div class="d-flex justify-content-center mt-4">
         {{ knp_pagination_render(sport_sessions, 'base/pagination.html.twig') }}

@@ -34,6 +34,7 @@ class SportSession
     private $date;
 
     #[ORM\ManyToOne(targetEntity: TrainingPlan::class, inversedBy: 'sportSessions')]
+    #[ORM\JoinColumn(name: 'training_plan_id', referencedColumnName: 'id', onDelete: 'SET NULL')]
     private $trainingPlan;
 
     #[ORM\OneToMany(mappedBy: 'sportSession', targetEntity: MainSport::class)]
