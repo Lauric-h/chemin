@@ -51,12 +51,12 @@
                             {% for mainSport in session.mainSport %}
                                 <td>{{ mainSport.name }}</td>
                                 <td>{{ mainSport.duration }} minutes</td>
-                                <td class="text-center">{{ mainSport.distance }}km</td>
-                                <td class="text-center">{{ mainSport.elevationGain }}m</td>
-                                <td class="text-center">{{ mainSport.elevationLoss }}m</td>
+                                <td class="text-center">{{ mainSport.distance }} {{ distance_unit }}</td>
+                                <td class="text-center">{{ mainSport.elevationGain }} {{ elevation_unit }}</td>
+                                <td class="text-center">{{ mainSport.elevationLoss }} {{ elevation_unit }}</td>
                             {% endfor %}
-                            <td class="text-center">{{ session.totalDuration }}m</td>
-                            <td class="text-center">{{ session.totalDistance }}km</td>
+                            <td class="text-center">{{ session.totalDuration }} {{ duration_unit }}</td>
+                            <td class="text-center">{{ session.totalDistance }} {{ distance_unit }}</td>
                             <td class="text-center d-flex justify-content-center">
                                 <a href="{{ path('sport_session_show', {'id': session.id}) }}"><i
                                             class="fas fa-eye"></i></a>

@@ -7,14 +7,15 @@
                     <h2 class="fs-5 fw-bold mb-0">Main sports</h2>
                 </div>
                 <div class="col text-end">
-                    <a href="{{ path('main_sport_new', {'id': sport_session.id }) }}" class="btn btn-sm btn-primary">
-                        Add main sport
-                    </a>
+                    <button type="button" class="btn btn-primary d-inline-flex align-items-center">
+                        <i class="fas fa-plus-circle icon icon-xxs me-2 d-inline-flex align-items-center"></i>
+                        <a href="{{ path('main_sport_new', {'id': sport_session.id }) }}" class="text-white">Add main sport</a>
+                    </button>
                 </div>
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table align-items-center table-flush">
+            <table class="table align-items-center table-flush table-hover">
                 <thead class="thead-light">
                 <tr>
                     <th class="border-bottom" scope="col">Name</th>
@@ -31,21 +32,21 @@
                         {{ main_sport.name }}
                     </th>
                     <td class="fw-bolder text-gray-500">
-                        {{ main_sport.duration }}
+                        {{ main_sport.duration }} {{ duration_unit }}
                     </td>
                     <td class="fw-bolder text-gray-500">
-                        {{ main_sport.distance }}
+                        {{ main_sport.distance }} {{ distance_unit }}
                     </td>
                     <td class="fw-bolder text-gray-500">
                         <div class="d-flex">
                             <svg class="icon icon-xs text-danger me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                            {{ main_sport.elevationGain }}
+                            {{ main_sport.elevationGain }} {{ elevation_unit }}
                         </div>
                     </td>
                     <td class="fw-bolder text-gray-500">
                         <div class="d-flex">
                             <svg class="icon icon-xs text-success me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            {{ main_sport.elevationLoss }}
+                            {{ main_sport.elevationLoss }} {{ elevation_unit }}
                         </div>
                     </td>
                     <td class="text-center">

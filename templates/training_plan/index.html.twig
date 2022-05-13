@@ -59,10 +59,12 @@
                                 {{ training_plan.status.value }}
                             </td>
                             <td class="text-center">
-                                <a href="{{ path('training_plan_show', {'id': training_plan.id}) }}"><i
-                                            class="fas fa-eye"></i></a>
-                                <a href="{{ path('training_plan_edit', {'id': training_plan.id}) }}"><i
-                                            class="fas fa-edit"></i></a>
+                                <a href="{{ path('training_plan_show', {'id': training_plan.id}) }}">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{{ path('training_plan_edit', {'id': training_plan.id}) }}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
                             </td>
                         </tr>
                         <!-- End of Item -->

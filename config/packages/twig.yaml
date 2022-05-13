@@ -1,6 +1,9 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
-
+    globals:
+        distance_unit: 'km'
+        elevation_unit: 'm'
+        duration_unit: 'minutes'
 when@test:
     twig:
         strict_variables: true
