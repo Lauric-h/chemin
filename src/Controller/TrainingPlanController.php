@@ -6,7 +6,7 @@ use App\Entity\Enum\Status;
 use App\Entity\TrainingPlan;
 use App\Form\TrainingPlanType;
 use App\Repository\TrainingPlanRepository;
-use App\Service\DurationCalculator;
+use App\Service\WeeksBetweenDatesCalculator;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;

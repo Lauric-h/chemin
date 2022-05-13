@@ -2,21 +2,21 @@
 
 namespace App\EventListener;
 use App\Entity\TrainingPlan;
-use App\Service\DurationCalculator;
+use App\Service\WeeksBetweenDatesCalculator;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 
 class TrainingPlanSavedListener
 {
     public function prePersist(
         TrainingPlan $trainingPlan,
-        LifecycleEventArgs $args): void
+        LifecycleEventArgs $args,
+    ): void
     {
+        $weeksBetweenDatesCalculator = new WeeksBetweenDatesCalculator();
 
-        $durationCalculator = new DurationCalculator();
-
-        $duration = $durationCalculator->calculateDuration(
+        $weeksBetweenDates = $weeksBetweenDatesCalculator->calculateWeeksBetweenDates(
             $trainingPlan->getStartDate(),
             $trainingPlan->getEndDate());
-        $trainingPlan->setDuration($duration);
+        $trainingPlan->setDuration($weeksBetweenDates);
     }
 }

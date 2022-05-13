@@ -25,9 +25,16 @@ services:
 # config/services.yaml
     App\EventListener\TrainingPlanSavedListener:
         arguments:
-            - 'App\Service\DurationCalculator'
+            - 'App\Service\WeeksBetweenDatesCalculator'
         tags:
             - # these are the options required to define the entity listener
                 name: 'doctrine.orm.entity_listener'
                 event: 'prePersist'
                 entity: 'App\Entity\TrainingPlan'
+
+    App\EventListener\MainSportListener:
+        tags:
+            - # these are the options required to define the entity listener
+                name: 'doctrine.orm.entity_listener'
+                event: 'postPersist'
+                entity: 'App\Entity\MainSport'

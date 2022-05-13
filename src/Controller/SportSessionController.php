@@ -76,7 +76,9 @@ class SportSessionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('sport_session_edit', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('sport_session_edit', [
+                'id' => $sportSession->getId()
+            ], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('sport_session/edit.html.twig', [
