@@ -5,16 +5,10 @@
 {% block body %}
     <h1>Sport Session</h1>
 
-    {# Main sport #}
-    <div class="row mt-4">
-        {% for s in sport_session.mainSport %}
-            <div class="col col-12">
-                {{ include('main_sport/show.html.twig', {'main_sport': s, 'sport_session': sport_session}) }}
-            </div>
-        {% endfor %}
-    </div>
+    {# Main Sport#}
+    {{ include('main_sport/show.html.twig', {'sport_session': sport_session }) }}
 
-
+    {# Sport Session cards #}
     <div class="row">
         <div class="row">
             <div class="col-3 mb-4">
@@ -23,14 +17,17 @@
                         <div class="row d-block d-xl-flex align-items-center">
                             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
                                 <div class="icon-shape icon-shape-secondary rounded me-4 me-sm-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="icon icon-tabler icon-tabler-calendar" width="44" height="44"
+                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <rect x="4" y="5" width="16" height="16" rx="2" />
-                                        <line x1="16" y1="3" x2="16" y2="7" />
-                                        <line x1="8" y1="3" x2="8" y2="7" />
-                                        <line x1="4" y1="11" x2="20" y2="11" />
-                                        <line x1="11" y1="15" x2="12" y2="15" />
-                                        <line x1="12" y1="15" x2="12" y2="18" />
+                                        <rect x="4" y="5" width="16" height="16" rx="2"/>
+                                        <line x1="16" y1="3" x2="16" y2="7"/>
+                                        <line x1="8" y1="3" x2="8" y2="7"/>
+                                        <line x1="4" y1="11" x2="20" y2="11"/>
+                                        <line x1="11" y1="15" x2="12" y2="15"/>
+                                        <line x1="12" y1="15" x2="12" y2="18"/>
                                     </svg>
                                 </div>
                                 <div class="d-sm-none">
@@ -57,14 +54,17 @@
                         <div class="row d-block d-xl-flex align-items-center">
                             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
                                 <div class="icon-shape icon-shape-secondary rounded me-4 me-sm-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-check" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="icon icon-tabler icon-tabler-list-check" width="44" height="44"
+                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M3.5 5.5l1.5 1.5l2.5 -2.5" />
-                                        <path d="M3.5 11.5l1.5 1.5l2.5 -2.5" />
-                                        <path d="M3.5 17.5l1.5 1.5l2.5 -2.5" />
-                                        <line x1="11" y1="6" x2="20" y2="6" />
-                                        <line x1="11" y1="12" x2="20" y2="12" />
-                                        <line x1="11" y1="18" x2="20" y2="18" />
+                                        <path d="M3.5 5.5l1.5 1.5l2.5 -2.5"/>
+                                        <path d="M3.5 11.5l1.5 1.5l2.5 -2.5"/>
+                                        <path d="M3.5 17.5l1.5 1.5l2.5 -2.5"/>
+                                        <line x1="11" y1="6" x2="20" y2="6"/>
+                                        <line x1="11" y1="12" x2="20" y2="12"/>
+                                        <line x1="11" y1="18" x2="20" y2="18"/>
                                     </svg>
                                 </div>
                                 <div class="d-sm-none">
@@ -91,12 +91,14 @@
                         <div class="row d-block d-xl-flex align-items-center">
                             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
                                 <div class="icon-shape icon-shape-secondary rounded me-4 me-sm-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-run" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-run"
+                                         width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50"
+                                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <circle cx="13" cy="4" r="1" />
-                                        <path d="M4 17l5 1l.75 -1.5" />
-                                        <path d="M15 21l0 -4l-4 -3l1 -6" />
-                                        <path d="M7 12l0 -3l5 -1l3 3l3 1" />
+                                        <circle cx="13" cy="4" r="1"/>
+                                        <path d="M4 17l5 1l.75 -1.5"/>
+                                        <path d="M15 21l0 -4l-4 -3l1 -6"/>
+                                        <path d="M7 12l0 -3l5 -1l3 3l3 1"/>
                                     </svg>
                                 </div>
                                 <div class="d-sm-none">
@@ -123,10 +125,12 @@
                         <div class="row d-block d-xl-flex align-items-center">
                             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
                                 <div class="icon-shape icon-shape-secondary rounded me-4 me-sm-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock"
+                                         width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50"
+                                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <circle cx="12" cy="12" r="9" />
-                                        <polyline points="12 7 12 12 15 15" />
+                                        <circle cx="12" cy="12" r="9"/>
+                                        <polyline points="12 7 12 12 15 15"/>
                                     </svg>
                                 </div>
                                 <div class="d-sm-none">
@@ -156,9 +160,10 @@
                             <div class="col-12 col-xl-7 px-xl-0">
                                 <div class="d-none d-sm-block">
                                     <h2 class="h6 text-gray-400 mb-0">Notes</h2>
-                                    <h3 class="fw-bold mb-2">
+                                    <hr>
+                                    <p class="fw-normal mb-2">
                                         {{ sport_session.notes }}
-                                    </h3>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -171,10 +176,13 @@
                         <div class="row d-block d-xl-flex align-items-center">
                             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
                                 <div class="icon-shape icon-shape-secondary rounded me-4 me-sm-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-corner-right-up-double" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="icon icon-tabler icon-tabler-corner-right-up-double" width="44"
+                                         height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M5 19h6a3 3 0 0 0 3 -3v-7" />
-                                        <path d="M10 13l4 -4l4 4m-8 -5l4 -4l4 4" />
+                                        <path d="M5 19h6a3 3 0 0 0 3 -3v-7"/>
+                                        <path d="M10 13l4 -4l4 4m-8 -5l4 -4l4 4"/>
                                     </svg>
                                 </div>
                                 <div class="d-sm-none">
@@ -201,10 +209,13 @@
                         <div class="row d-block d-xl-flex align-items-center">
                             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
                                 <div class="icon-shape icon-shape-secondary rounded me-4 me-sm-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-corner-right-down-double" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="icon icon-tabler icon-tabler-corner-right-down-double" width="44"
+                                         height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M5 4h6a3 3 0 0 1 3 3v7" />
-                                        <path d="M10 10l4 4l4 -4m-8 5l4 4l4 -4" />
+                                        <path d="M5 4h6a3 3 0 0 1 3 3v7"/>
+                                        <path d="M10 10l4 4l4 -4m-8 5l4 4l4 -4"/>
                                     </svg>
                                 </div>
                                 <div class="d-sm-none">

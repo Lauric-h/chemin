@@ -3,7 +3,8 @@ twig:
     globals:
         distance_unit: 'km'
         elevation_unit: 'm'
-        duration_unit: 'minutes'
+        duration_unit: 'min'
+        plan_duration_unit: 'weeks'
 when@test:
     twig:
         strict_variables: true

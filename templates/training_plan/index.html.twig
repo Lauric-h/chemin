@@ -49,7 +49,7 @@
                                 {{ training_plan.endDate ? training_plan.endDate|date('d-m-Y') : '' }}
                             </td>
                             <td class="text-center">
-                                {{ training_plan.duration }}
+                                {{ training_plan.duration }} {{ plan_duration_unit }}
                             </td>
                             <td class="text-center">
                                 {{ training_plan.isStarted }}

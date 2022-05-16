@@ -17,6 +17,9 @@
                 <table class="table table-centered table-nowrap mb-0 rounded table-hover table-striped">
                     <thead class="thead-light">
                     <tr>
+                        <th class="border-0">
+
+                        </th>
                         <th class="border-0 rounded-start">
                             {{ knp_pagination_sortable(sport_sessions, 'date', 'ss.date') }}
                         </th>
@@ -27,7 +30,8 @@
                             Duration
                         </th>
                         <th class="border-0 text-center">
-                            Distance</th>
+                            Distance
+                        </th>
                         <th class="border-0 text-center">
                             Elevation gain
                         </th>
@@ -47,14 +51,20 @@
                     <!-- Item -->
                     {% for session in sport_sessions %}
                         <tr>
+                            <td>
+                                <p class="badge bg-secondary" style="margin: 0">
+                                    {{ session.mainSport[0].tag.value }}
+                                </p>
+                            </td>
                             <td>{{ session.date ? session.date|date('d-m-Y') : '' }}</td>
-                            {% for mainSport in session.mainSport %}
-                                <td>{{ mainSport.name }}</td>
-                                <td>{{ mainSport.duration }} minutes</td>
-                                <td class="text-center">{{ mainSport.distance }} {{ distance_unit }}</td>
-                                <td class="text-center">{{ mainSport.elevationGain }} {{ elevation_unit }}</td>
-                                <td class="text-center">{{ mainSport.elevationLoss }} {{ elevation_unit }}</td>
-                            {% endfor %}
+
+                            {# We only fetch first item in MainSport#}
+                            <td>{{ session.mainSport[0].name }}</td>
+                            <td>{{ session.mainSport[0].duration }} minutes</td>
+                            <td class="text-center">{{ session.mainSport[0].distance }} {{ distance_unit }}</td>
+                            <td class="text-center">{{ session.mainSport[0].elevationGain }} {{ elevation_unit }}</td>
+                            <td class="text-center">{{ session.mainSport[0].elevationLoss }} {{ elevation_unit }}</td>
+
                             <td class="text-center">{{ session.totalDuration }} {{ duration_unit }}</td>
                             <td class="text-center">{{ session.totalDistance }} {{ distance_unit }}</td>
                             <td class="text-center d-flex justify-content-center">

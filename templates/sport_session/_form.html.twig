@@ -1,21 +1,18 @@
-<div class="row">
-    <div class="col-12 mb-4">
-        <div class="card border-0 shadow components-section">
-            <div class="card-body">
-                <div class="row mb-4">
-                    <div class="col-lg-4 col-sm-6">
-
-                        <div class="mb-3">
-                            {{ form_start(form) }}
-                            <div class="my-4">
-                                {{ form_label(form.notes) }}
-                                {{ form_errors(form.notes, { 'attr': { 'class': 'alert alert-danger' } }) }}
-                                {{ form_widget(form.notes, { 'attr': { 'class': 'form-control' } }) }}
-                            </div>
-                            <div class="mb-3">
-                                {{ form_label(form.date) }}
-                                {{ form_errors(form.date, { 'attr': { 'class': 'alert alert-danger' } }) }}
-                                <div class="input-group">
+<div class="card border-0 shadow components-section">
+    <div class="card-body">
+        <div class="row mb-4">
+            <div class="col-6">
+                <div class="mb-3">
+                    {{ form_start(form) }}
+                    <div class="my-4">
+                        {{ form_label(form.notes) }}
+                        {{ form_errors(form.notes, { 'attr': { 'class': 'alert alert-danger' } }) }}
+                        {{ form_widget(form.notes, { 'attr': { 'class': 'form-control' } }) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.date) }}
+                        {{ form_errors(form.date, { 'attr': { 'class': 'alert alert-danger' } }) }}
+                        <div class="input-group">
                                 <span class="input-group-text">
                                     <svg class="icon icon-xs text-gray-600"
                                          fill="currentColor"
@@ -27,19 +24,17 @@
                                         </path>
                                     </svg>
                                 </span>
-                                    {{ form_widget(form.date, { 'attr': { 'class': 'form-control' } }) }}
-                                </div>
-                            </div>
-
-                            <div class="mb-4">
-                                {# {{ form_label(form.trainingPlan, { 'attr': { 'class': 'my-1 me-2' } }) }} #}
-                                {{ form_widget(form.trainingPlan, { 'attr': { 'class': 'form-select' } }) }}
-                            </div>
-
-                            <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
-                            {{ form_end(form) }}
+                            {{ form_widget(form.date, { 'attr': { 'class': 'form-control' } }) }}
                         </div>
                     </div>
+
+                    <div class="mb-4">
+                        {# {{ form_label(form.trainingPlan, { 'attr': { 'class': 'my-1 me-2' } }) }} #}
+                        {{ form_widget(form.trainingPlan, { 'attr': { 'class': 'form-select' } }) }}
+                    </div>
+
+                    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+                    {{ form_end(form) }}
                 </div>
             </div>
         </div>
