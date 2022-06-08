@@ -15,7 +15,6 @@ class TotalsCalculator
         $sportSession
             ->setTotalDuration($sportSession->getTotalDuration() + $mainSport->getDuration())
             ->setTotalDistance($sportSession->getTotalDistance() + $mainSport->getDistance())
-            ->setTotalDistance($sportSession->getTotalDistance() + $mainSport->getDistance())
             ->setTotalElevationLoss($sportSession->getTotalElevationLoss() + $mainSport->getElevationLoss())
             ->setTotalElevationGain($sportSession->getTotalElevationGain() + $mainSport->getElevationGain())
         ;

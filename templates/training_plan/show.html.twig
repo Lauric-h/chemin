@@ -5,6 +5,14 @@
 {% block body %}
     <h1>{{ training_plan.name }}</h1>
 
+    {% if training_plan.status.value is same as 'Planned' %}
+        <div class="row mb-4">
+            <form action="{{ path('start_training_plan', {'id': training_plan.id}) }}" method="post">
+                <button type="submit" class="btn btn-outline-tertiary">Start training plan</button>
+            </form>
+        </div>
+    {% endif %}
+
     <div class="row">
         <div class="col-12 col-sm-6 col-xl-4 mb-4">
             <div class="card border-0 shadow">

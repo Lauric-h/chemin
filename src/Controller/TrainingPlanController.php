@@ -108,4 +108,16 @@ class TrainingPlanController extends AbstractController
 
         return $this->redirectToRoute('training_plan_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/start', name: 'start_training_plan', methods: ['POST'])]
+    public function startTrainingPlan(TrainingPlan $trainingPlan, EntityManagerInterface $entityManager): Response {
+
+        $trainingPlan->setStatus(Status::IN_PROGRESS);
+        $entityManager->persist($trainingPlan);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('training_plan_show', [
+            'id' => $trainingPlan->getId()
+        ]);
+    }
 }
